@@ -66,3 +66,52 @@ const connection = mysql.createConnection({
       });
   }
   
+  function addDepartment() {
+    inquirer
+      .prompt({
+        type: "input",
+        message: "What is the name of the department you want to add?",
+        name: "department"
+      })
+      .then(function(res) {
+        const department = res.department;
+        const query = `INSERT INTO department (name) VALUES("${department}")`;
+        connection.query(query, function(err, res) {
+          if (err) throw err;
+          console.table(res);
+          start();
+        });
+      });
+  }
+  
+function addRole() {
+    inquirer
+      .prompt([
+        {
+          type: "input",
+          message: "What is the job title you want to add?",
+          name: "title"
+        },
+        {
+          type: "input",
+          message: "What is the salary for this position?",
+          name: "salary"
+        },
+        {
+          type: "input",
+          message: "What is the department ID for this position?",
+          name: "departmentID"
+        }
+      ])
+      .then(function(res) {
+        const title = res.title;
+        const salary = res.salary;
+        const departmentID = res.departmentID;
+        const query = `INSERT INTO role (title, salary, department_id) VALUE("${title}", "${salary}", "${departmentID}")`;
+        connection.query(query, function(err, res) {
+          if (err) throw err;
+          console.table(res);
+          start();
+        });
+      });
+  }
