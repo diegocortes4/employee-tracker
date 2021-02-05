@@ -4,16 +4,17 @@ USE employees;
 
 CREATE TABLE department (
  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    Name varchar(30)
+    Name varchar(30) NULL,
+    PRIMARI KEY (id)
 );
 
 CREATE TABLE role (
  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    Title varchar(30),
-    Salary decimal(10,2),
-    department_id int UNSIGNED,
+    Title varchar(30) NULL,
+    Salary decimal(10,2) NULL,
+    department_id int NULL,
     foreign key (department_id) REFERENCES department(id)
-	
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE employee (

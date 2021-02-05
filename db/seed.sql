@@ -23,6 +23,9 @@ VALUES
 ("Artist", 150000, 4);
 
 INSERT INTO department (Name)
-VALUES ("Health"),("Engineering"),("Finance"),("Legal");
+VALUES ("Health"),
+("Engineering"),
+("Finance"),
+("Legal");
 
 
